@@ -1,4 +1,4 @@
-all: frontend
+all: frontend webapi pipeline serviceapi  localcrawler es db redis rabbit
 
 .PHONY: frontend
 frontend:
