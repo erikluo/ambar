@@ -22,7 +22,7 @@ services:
       - "9200"
     environment:
       - cluster.name=ambar-es
-      - ES_JAVA_OPTS=-Xms2g -Xmx2g
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
     ulimits:
       memlock:
         soft: -1
@@ -141,3 +141,15 @@ services:
       - name=mysource
     volumes:
       - /Users/erik/MySources:/usr/data
+
+  rsyncd:
+    image:  bfosberry/rsync:latest 
+    restart: always
+    networks:
+      - internal_network
+    ports:
+      - "873:873"
+    expose:
+      - "873"
+    volumes:
+      - /Users/erik/MySources:/data
