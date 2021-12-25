@@ -1,8 +1,9 @@
-all: frontend webapi pipeline serviceapi  localcrawler es db redis rabbit
+all:  webapi pipeline serviceapi  localcrawler es db redis rabbit frontend
 
 .PHONY: frontend
 frontend:
-	docker run -it --rm -v ~/MySources/ambar/FrontEnd:/mnt joshfinnie/nvm /mnt/compile.sh
+	echo $(shell pwd)
+	docker run -it --rm -v $(shell pwd)/FrontEnd:/mnt joshfinnie/nvm /mnt/compile.sh
 	cd FrontEnd; docker build -t erikluo/ambar-frontend:v0.1 -f  Dockerfile .
 
 .PHONY: webapi
